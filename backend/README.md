@@ -1,4 +1,4 @@
-# Lab 6.1: Inverted Index
+# Backend
 
 ## Installation
 
