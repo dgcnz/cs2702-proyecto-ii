@@ -18,11 +18,15 @@
 
 ### Prepocesamiento
 
-### Inverted index
+### Construcción del índice invertido
 
 ### Blocked Sort-Based Indexing
 
 ### Complejidad Algorítmica
+
+### Manejo de memoria secundaria
+
+### Consultas
 
 ### API
 
