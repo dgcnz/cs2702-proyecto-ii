@@ -12,7 +12,7 @@
 ### Objetivo del Proyecto
 
 ### Descricpión del Dominio de Datos
-`Dataset:` https://www.kaggle.com/snapcrack/all-the-news
+`Kaggle Dataset:` [All The News](https://www.kaggle.com/snapcrack/all-the-news)
 
 ## Funcionamiento
 
@@ -20,13 +20,16 @@
 
 ### Inverted index
 
-### Computando el TF-IDF
+### Blocked Sort-Based Indexing
 
 ### Complejidad Algorítmica
 
 ### API
 
-> Obtener todos los tweets.
+> Buscar todos los tweets relevantes.
+- `Method:` GET
+- `Parameters:` **text**=Lorem Ipsum...
+- `Response:`
 ```
 {
   "current_page": 1,
