@@ -1,9 +1,12 @@
 # Backend
 
-## Installation
+## Setup and Installation
 
 ```bash
+# Install dependencies
 ./scripts/install
+# Create tweet jsons
+./scripts/inflate_data
 ```
 
 ## TODO

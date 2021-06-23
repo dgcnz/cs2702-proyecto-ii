@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+env/bin/python3 scripts/split_data.py

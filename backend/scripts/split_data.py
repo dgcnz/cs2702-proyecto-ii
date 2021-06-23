@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from tqdm import tqdm
 
-FILES = ["articles1.csv"]
+FILES = ["scripts/data1.csv","scripts/data2.csv"]
 
 for FILE in tqdm(FILES):
     df = pd.read_csv(FILE)
