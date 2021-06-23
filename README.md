@@ -26,18 +26,25 @@
 
 ### API
 
-> Ejemplo del JSON de cada Tweet.
+> Obtener todos los tweets.
 ```
 {
-  "id": 1,
-  "title": "",
-  "publication": "",
-  "author": "",
-  "date": "",
-  "text": "",
-  "year": 2016.0,
-  "month": 12.0,
-  "content": "Lorem Ipsum..."
+  "current_page": 1,
+  "total_pages": 12,
+  "tweets": [
+            {
+              "id": 1,
+              "title": "",
+              "publication": "",
+              "author": "",
+              "date": "",
+              "text": "",
+              "year": 2016.0,
+              "month": 12.0,
+              "content": "Lorem Ipsum..."
+            },
+            ...
+  ]
 }
 ```
 
