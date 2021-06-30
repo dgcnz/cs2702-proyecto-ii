@@ -20,13 +20,22 @@
 
 ```
 {
-word1:  {
-            [(docid1, tf(word1, docid1)), (docid2, tf(word1, docid2)), ...]
-        },
-word2:  {
-        ...
-        },
-...
+docs: {
+            doc1: 10, // count of words per doc
+            doc2: 20,
+            ..
+},
+words: {
+            word1:  {
+                        doc1: 4, // tf of word in doc
+                        doc2: 5,
+                        ...
+            },
+            word2:  {
+            ...
+            },
+            ...
+}
 }
 ```
 
