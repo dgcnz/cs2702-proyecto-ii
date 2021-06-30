@@ -37,8 +37,7 @@ class Processor:
 class Block:
     block_id = 0;
     docs = {}
-    words_count = {}
-    words_docs = {}
+    words = {}
     
     def __init__ (self, id: int):
         self.block_id = id
@@ -54,13 +53,10 @@ class Block:
 
     def write_block(self, number_of_docs: int):
         data = {}
-        words = {}
         
         data["docs"] = self.docs
+        data["words"] = self.words
     
-        for key in words_count
-            data[key]["count"] = words_count[key]
-            data[key]["docs"] = words_docs[key]
     
         with open (str(self.block_id) + '.json', 'w') as file:
             json.dump(data, file, ensure_ascii=False)
