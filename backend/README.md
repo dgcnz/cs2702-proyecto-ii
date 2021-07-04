@@ -7,6 +7,8 @@
 ./scripts/install
 # Create tweet jsons
 ./scripts/inflate_data
+# Create N tweet jsons
+env/bin/python3 scripts/split_data.py scripts/data1.csv scripts/data2.csv --maxn N
 ```
 
 ## TODO

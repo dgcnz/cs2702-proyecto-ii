@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-env/bin/python3 scripts/split_data.py
+env/bin/python3 scripts/split_data.py scripts/data1.csv scripts/data2.csv
