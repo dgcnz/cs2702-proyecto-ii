@@ -21,6 +21,7 @@
 ### Construcción del índice invertido
 
 ### Blocked Sort-Based Indexing
+La complejidad teórica de la construcción de este índice es de $O (n \log n)$ siendo $n$ la cantidad de keys a ordenar en el merge y el ordenamiento de los bloques. Dentro de nuestra implementación hemos construido cada bloque en forma de .json files, de esta manera mantenemos diccionarios dentro de la memoria.
 
 ### Complejidad Algorítmica
 
