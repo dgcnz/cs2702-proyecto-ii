@@ -1,23 +1,13 @@
 import unittest
-import glob
-from lib.invertedindex import build_inverted_index
-from lib.preprocessor import Preprocessor
+from pathlib import Path
+from lib.iixdisk import DiskInvertedIndex
 
 
 class TestInvertedIndex(unittest.TestCase):
-    def test_nested_query(self):
-        """Test Nested Query"""
-        files = glob.glob("tests/data/*.txt")
-        files.sort()
-        docs = []
-        for file in files:
-            with open(file, 'r') as f:
-                docs.append(f.read())
-
-        p = Preprocessor()
-        iix = build_inverted_index(docs, p, 100)
-        QUERY = "OR(AND(RET(frodo), RET(comunidad)), RET(mordor))"
-        self.assertEqual(iix.query(QUERY), [1, 3, 4])
+    def test_literal_query(self):
+        iix = DiskInvertedIndex(Path('data/'))
+        ans = iix.query('After the bullet shells get counted, the blood dries and the votive candles burn', 1)
+        self.assertEqual(ans[0][0], Path('data/17284.json'))
 
 
 if __name__ == '__main__':
