@@ -22,19 +22,23 @@ class DiskInvertedIndex:
     normpath: Path
     idfpath: Path
 
-    def __init__(self, datapath: Path):
+    def __init__(self, datapath: Path, cached=False):
         self.datapath = datapath
         files = list(self.datapath.glob('*.json'))
-
         self.N = len(files)  # Number of documents
-        B = int(self.N / log(self.N))  # Number of documents per block
+        if not cached:
+            B = int(self.N / log(self.N))  # Number of documents per block
 
-        blocks = map(lambda args: self.block_process(*args),
-                     enumerate(chunks(files, B)))
-        self.iixpath = reduce(self.block_merge, list(blocks))
-        self.iixpath.rename(self.indexpath / 'iix.json')
-        self.iixpath = self.indexpath / 'iix.json'
-        self.precompute()
+            blocks = map(lambda args: self.block_process(*args),
+                         enumerate(chunks(files, B)))
+            self.iixpath = reduce(self.block_merge, list(blocks))
+            self.iixpath.rename(self.indexpath / 'iix.json')
+            self.iixpath = self.indexpath / 'iix.json'
+            self.precompute()
+        else:
+            self.iixpath = self.indexpath / 'iix.json'
+            self.normpath = self.indexpath / 'norm.json'
+            self.idfpath = self.indexpath / 'idf.json'
 
     def load_iix(self, iixpath: Path):
         data = {}
