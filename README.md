@@ -55,7 +55,7 @@ DiskInvertedIndex.query(qtext: str, k: int)
 - `Response:`
 ```
 {
-  [
+  {
     "id": 1,
     "title": "",
     "publication": "",
@@ -65,7 +65,7 @@ DiskInvertedIndex.query(qtext: str, k: int)
     "year": 2016.0,
     "month": 12.0,
     "content": "Lorem Ipsum..."
-   ],
+   },
    ...
 }
 ```
