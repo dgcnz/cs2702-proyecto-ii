@@ -37,7 +37,7 @@ El esquema de pesos del tfidf utilizado es el siguiente:
 w(t, d) = log(1 + tf(t, d)) * log(1 + N / df(t))
 ```
 
-Dicho tfidf se normaliza y se guarda en el indice invertido final para no recomputarlo. 
+El logaritmo es usado para evitar algun bias a documentos grandes. Dicho tfidf se normaliza y se guarda en el indice invertido final para no recomputarlo. 
 
 ### Consultas
 
