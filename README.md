@@ -86,3 +86,4 @@ DiskInvertedIndex.query(qtext: str, k: int)
 ![Results](docs/results.jpeg)
 
 ## Demostración
+[Link al video demostrativo](https://drive.google.com/file/d/1PbUAyaTdX_fR9Jlazzwcwcm2sTGDtfiZ/view?usp=sharing)
