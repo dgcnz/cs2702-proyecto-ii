@@ -50,10 +50,10 @@ DiskInvertedIndex.query(qtext: str, k: int)
 
 ### Stress-testing
 
-|                              | 1000   | 10000   | 20000   |
+|                              | 1000 noticias | 10000 noticias| 20000 noticias|
 |------------------------------|--------|---------|---------|
-| Index Construction (5 tests) | 14.659 | 141.359 | 200.592 |
-| KNN Query (5 tests)          | 0.273  | 2.464   | 3.288   |
+| Index Construction (5 tests) | 14.659 s| 141.359 s| 200.592 s|
+| KNN Query (5 tests)          | 0.273 s| 2.464 s| 3.288 s|
 
 ### API
 
@@ -79,5 +79,9 @@ DiskInvertedIndex.query(qtext: str, k: int)
 ```
 
 ## Frontend
+
+![Searchbar](docs/searchbar.jpeg)
+![Searching](docs/searching.jpeg)
+![Results](docs/results.jpeg)
 
 ## Demostración
