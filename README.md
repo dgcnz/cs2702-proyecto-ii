@@ -11,6 +11,7 @@
 ## Descripción
 
 ### Objetivo del Proyecto
+En este proyecto hemos desarrollado un buscador de veinte mil noticias usando un Indice Invertido para la idexacion de estas y Block Based Indexing para el manejo de la información en disco. A continuación vamos a mostrar a detalle el proceso de implementación del programa.
 
 ### Descricpión del Dominio de Datos
 
