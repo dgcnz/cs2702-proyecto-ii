@@ -47,6 +47,13 @@ Se usa el algoritmo visto en clase para computar la distancia coseno. El paramet
 DiskInvertedIndex.query(qtext: str, k: int)
 ```
 
+### Stress-testing
+
+|                              | 1000   | 10000   | 20000   |
+|------------------------------|--------|---------|---------|
+| Index Construction (5 tests) | 14.659 | 141.359 | 200.592 |
+| KNN Query (5 tests)          | 0.273  | 2.464   | 3.288   |
+
 ### API
 
 > Buscar todos los tweets relevantes.
