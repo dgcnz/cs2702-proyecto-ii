@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='cardStyle.css') }}">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+    {% for category, message in messages %}
+      <div class="alert {{ category }}" role="alert">{{ message }}</div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main class="flex-shrink-0">
+    <div class="container" style="text-align: center; margin-top: 50px;">
+        <img src="/images/news.png" style="width: 180px; margin-top: 30px;" />
+        <h1 style="color:#FCD105; margin-top: 10px;"> BuscaNews </h1>
+        <form action="javascript:void(0);" method="post">
+        <div class="mb-3">
+            <div id="stringHelp" class="form-text">Ingrese su búsqueda en el siguiente recuadro:</div>
+            <div style="display: inline-block; width: 80%;">
+              <input placeholder="Búsqueda" style="background-color: #EDF2F7;" type="text" class="form-control" id="searchBar" name="searchString">
+            </div>
+            <div style="display: inline-block; width: 7%;">
+              <input placeholder="Valor K" style="background-color: #FCD105;" type="text" class="form-control" id="kBar" name="kString">
+            </div>
+        </div>
+        <button type="button" onClick="buscar()" class="btn btn-primary" style="background-color: #FCD105; border: none;">Buscar</button>
+        </form>
+    </div>
+
+    <div class="container" style="margin-top: 50px; text-align: center;">
+        <div id="resultados">
+        
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript" src="{{ url_for('static', filename='search.js') }}"></script>
+
+{% endblock %}

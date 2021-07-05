@@ -1,5 +1,7 @@
 **/.vim/
 **/__pycache__/
 backend/env/
+backend/env 
 backend/data/*.json
 backend/index/*.json
+backend/scripts/env
