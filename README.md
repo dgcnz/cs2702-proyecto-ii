@@ -2,7 +2,9 @@
 
 
 ## Datos generales
+
 ### Integrantes
+
 - Andrea Díaz
 - Diego Cánez
 - Maor Roizman
@@ -12,23 +14,38 @@
 ### Objetivo del Proyecto
 
 ### Descricpión del Dominio de Datos
+
 `Kaggle Dataset:` [All The News](https://www.kaggle.com/snapcrack/all-the-news)
 
 ## Funcionamiento
 
-### Prepocesamiento
-La construcción del Indice Invertido y la indexación de Bloques suceden al momento de correr el programa, después de este el programa espera el query a buscar.
+```python
+DiskInvertedIndex.__init__(datapath: Path, cached=False)
+```
 
-### Construcción del índice invertido
+El Indice invertido toma como argumento el folder de la data. Si la data se ha indexado anteriormente, la opcion `cached=True` le indica que no recompute el indice de nuevo.
 
-### Blocked Sort-Based Indexing
-La complejidad teórica de la construcción de este índice es de `O (n log n)` siendo `n` la cantidad de keys a ordenar en el merge y el ordenamiento de los bloques. Dentro de nuestra implementación hemos construido cada bloque en forma de .json files, de esta manera mantenemos diccionarios dentro de la memoria.
+Usando block-based sorting, la construccion del inverted index es en dos partes:
 
-### Complejidad Algorítmica
+1. Partition/Map: Se crean indices temporales, cada uno procesando B documentos distintos. Los documentos se preprocesan con las funcion `clean_text`.
+2. Reduce: De dos en dos se hace merge de los indices temporales en uno solo. 
 
-### Manejo de memoria secundaria
+
+El esquema de pesos del tfidf utilizado es el siguiente:
+
+```
+w(t, d) = log(1 + tf(t, d)) * log(1 + N / df(t))
+```
+
+Dicho tfidf se normaliza y se guarda en el indice invertido final para no recomputarlo. 
 
 ### Consultas
+
+Se usa el algoritmo visto en clase para computar la distancia coseno. El parametro `k` indica la cantidad de elementos a ser retornados.
+
+```python
+DiskInvertedIndex.query(qtext: str, k: int)
+```
 
 ### API
 

@@ -63,7 +63,7 @@ class DiskInvertedIndex:
             idf[word] += len(doc_cnts)
 
         for word in idf.keys():
-            idf[word] = log(self.N / idf[word])
+            idf[word] = log(1 + self.N / idf[word])
 
         for word, doc_cnts in data.items():
             for docid, cnt in doc_cnts.items():
