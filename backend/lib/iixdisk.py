@@ -63,14 +63,16 @@ class DiskInvertedIndex:
             idf[word] += len(doc_cnts)
 
         for word in idf.keys():
-            idf[word] = self.N / idf[word]
+            idf[word] = log(self.N / idf[word])
 
         for word, doc_cnts in data.items():
             for docid, cnt in doc_cnts.items():
-                data[word][docid] = cnt * idf[word]
+                docid = int(docid)
+                data[word][docid] = log(1 + cnt) * idf[word]
                 norm[docid] += data[word][docid]**2
 
         for docid in norm.keys():
+            docid = int(docid)
             norm[docid] = sqrt(norm[docid])
 
         self.normpath = self.indexpath / 'norm.json'
@@ -105,9 +107,11 @@ class DiskInvertedIndex:
         merged = defaultdict(lambda: defaultdict(int))
         for word, docid_cnts in data0.items():
             for docid, cnt in docid_cnts.items():
+                docid = int(docid)
                 merged[word][docid] += cnt
         for word, docid_cnts in data1.items():
             for docid, cnt in docid_cnts.items():
+                docid = int(docid)
                 merged[word][docid] += cnt
         self.save_iix(block0, merged)
         os.remove(block1)
@@ -135,7 +139,7 @@ class DiskInvertedIndex:
 
         qnorm = 0.0
         for qtoken in wq.keys():
-            wq[qtoken] *= self.N / idf[qtoken]
+            wq[qtoken] = log(1 + wq[qtoken]) * idf[qtoken]
             qnorm += wq[qtoken]**2
 
         qnorm = sqrt(qnorm)
@@ -145,9 +149,11 @@ class DiskInvertedIndex:
         score = defaultdict(float)
         for qtoken in qtokens:
             for docid, wt in iix[qtoken].items():
+                docid = int(docid)
                 score[docid] += wq[qtoken] * wt
 
         for docid, docnorm in norm.items():
+            docid = int(docid)
             score[docid] /= docnorm
 
         ans = list(score.items())
