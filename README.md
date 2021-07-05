@@ -17,6 +17,7 @@
 ## Funcionamiento
 
 ### Prepocesamiento
+La construcción del Indice Invertido y la indexación de Bloques suceden al momento de correr el programa, después de este el programa espera el query a buscar.
 
 ### Construcción del índice invertido
 
@@ -37,22 +38,18 @@ La complejidad teórica de la construcción de este índice es de `O (n log n)` 
 - `Response:`
 ```
 {
-  "current_page": 1,
-  "total_pages": 12,
-  "tweets": [
-            {
-              "id": 1,
-              "title": "",
-              "publication": "",
-              "author": "",
-              "date": "",
-              "text": "",
-              "year": 2016.0,
-              "month": 12.0,
-              "content": "Lorem Ipsum..."
-            },
-            ...
-  ]
+  [
+    "id": 1,
+    "title": "",
+    "publication": "",
+    "author": "",
+    "date": "",
+    "text": "",
+    "year": 2016.0,
+    "month": 12.0,
+    "content": "Lorem Ipsum..."
+   ],
+   ...
 }
 ```
 
