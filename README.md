@@ -80,4 +80,8 @@ DiskInvertedIndex.query(qtext: str, k: int)
 
 ## Frontend
 
+![Searchbar](docs/searchbar.jpeg)
+![Searching](docs/searching.jpeg)
+![Results](docs/results.jpeg)
+
 ## Demostración
