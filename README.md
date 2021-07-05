@@ -14,7 +14,7 @@
 En este proyecto hemos desarrollado un buscador de veinte mil noticias usando un Indice Invertido para la idexacion de estas y Block Based Indexing para el manejo de la información en disco. A continuación vamos a mostrar a detalle el proceso de implementación del programa.
 
 ### Descricpión del Dominio de Datos
-
+Hemos utilizado un data set de 20 mil noticias, cada una de ellas tiene un `id`, `titulo`, `autor`, `fecha` y la noticia en sí.
 `Kaggle Dataset:` [All The News](https://www.kaggle.com/snapcrack/all-the-news)
 
 ## Funcionamiento
