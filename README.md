@@ -1,6 +1,5 @@
 # Proyecto 2 - Recuperación de Documentos de Texto
 
-
 ## Datos generales
 
 ### Integrantes
@@ -27,8 +26,10 @@ El Indice invertido toma como argumento el folder de la data. Si la data se ha i
 
 Usando block-based sorting, la construccion del inverted index es en dos partes:
 
-1. Partition/Map: Se crean indices temporales, cada uno procesando B documentos distintos. Los documentos se preprocesan con las funcion `clean_text`.
+1. Partition/Map: Se crean indices temporales en disco, cada uno habiendo procesado `B` documentos distintos. Los documentos se preprocesan con las funcion `clean_text`.
 2. Reduce: De dos en dos se hace merge de los indices temporales en uno solo. 
+
+Como se procesa un documento a la vez, no se sobrecarga la memoria principal. 
 
 
 El esquema de pesos del tfidf utilizado es el siguiente:
@@ -37,15 +38,22 @@ El esquema de pesos del tfidf utilizado es el siguiente:
 w(t, d) = log(1 + tf(t, d)) * log(1 + N / df(t))
 ```
 
-Dicho tfidf se normaliza y se guarda en el indice invertido final para no recomputarlo. 
+El logaritmo es usado para evitar algun bias a documentos grandes. Dicho tfidf se normaliza y se guarda en el indice invertido final para no recomputarlo. 
 
 ### Consultas
 
-Se usa el algoritmo visto en clase para computar la distancia coseno. El parametro `k` indica la cantidad de elementos a ser retornados.
+Se usa el algoritmo visto en clase para computar la distancia coseno. Recordamos que este hace 1 lectura en disco y corre en tiempo lineal al numero de documentos que contiene las palabras en el query. El parametro `k` indica la cantidad de elementos a ser retornados.
 
 ```python
 DiskInvertedIndex.query(qtext: str, k: int)
 ```
+
+### Stress-testing
+
+|                              | 1000   | 10000   | 20000   |
+|------------------------------|--------|---------|---------|
+| Index Construction (5 tests) | 14.659 | 141.359 | 200.592 |
+| KNN Query (5 tests)          | 0.273  | 2.464   | 3.288   |
 
 ### API
 
@@ -55,7 +63,7 @@ DiskInvertedIndex.query(qtext: str, k: int)
 - `Response:`
 ```
 {
-  [
+  {
     "id": 1,
     "title": "",
     "publication": "",
@@ -65,7 +73,7 @@ DiskInvertedIndex.query(qtext: str, k: int)
     "year": 2016.0,
     "month": 12.0,
     "content": "Lorem Ipsum..."
-   ],
+   },
    ...
 }
 ```
