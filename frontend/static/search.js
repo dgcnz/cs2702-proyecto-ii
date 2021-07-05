@@ -43,7 +43,7 @@ function buscar(){
         "words": words,
         "k_value": k_value
     });
-
+    loading();
     $.ajax({
         url:'/get-news',
         type:'POST',
@@ -51,6 +51,7 @@ function buscar(){
         data : message,
         dataType:'json',
         success: function(response){
+            $("#loading").hide();
             $("#resultados").html("");
 
             $.each(response, function(key, value) {
@@ -89,3 +90,8 @@ function buscar(){
     });
 }
 
+$("#loading").hide();
+
+function loading(){
+    $("#loading").show();
+}
