@@ -101,10 +101,10 @@ class DiskInvertedIndex:
         merged = defaultdict(lambda: defaultdict(int))
         for word, docid_cnts in data0.items():
             for docid, cnt in docid_cnts.items():
-                merged[docid][word] += cnt
+                merged[word][docid] += cnt
         for word, docid_cnts in data1.items():
             for docid, cnt in docid_cnts.items():
-                merged[docid][word] += cnt
+                merged[word][docid] += cnt
         self.save_iix(block0, merged)
         os.remove(block1)
         return block0
@@ -133,6 +133,7 @@ class DiskInvertedIndex:
         for qtoken in wq.keys():
             wq[qtoken] *= self.N / idf[qtoken]
             qnorm += wq[qtoken]**2
+
         qnorm = sqrt(qnorm)
         for qtoken in wq.keys():
             wq[qtoken] /= qnorm
